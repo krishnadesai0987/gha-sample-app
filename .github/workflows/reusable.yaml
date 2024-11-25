@@ -19,15 +19,15 @@ jobs:
     outputs:
       outcome: ${{ steps.set-result.outputs.step-result }}
     runs-on: ubuntu-latest
-        steps:
-            - name: download artifact
-              uses: actions/download-artifact@v3
-              with: 
-                name: ${{ inputs.artifact-name }}
-            - name: List files
-              run: ls
-            - name: output information
-              run: echo "deploying & uploading"
-            - name: set result output
-              id: set-result
-              run: echo "::set-output name=step-result::success"
+      steps:
+        - name: download artifact
+          uses: actions/download-artifact@v3
+          with: 
+            name: ${{ inputs.artifact-name }}
+        - name: List files
+          run: ls
+        - name: output information
+          run: echo "deploying & uploading"
+        - name: set result output
+          id: set-result
+          run: echo "::set-output name=step-result::success"
