@@ -9,7 +9,7 @@ on:
                 type: string
         outputs: 
             result: The result of the deployment operation
-            value:  ${{ jobs.deploy.result.outcome }}
+            value:  ${{  jobs.deploy.result }}
 
      #   secrets: 
       #      some-secrets:
@@ -17,7 +17,6 @@ on:
 jobs:
     deploy:
         outputs:
-            result:
                 outcome: ${{ steps.set-result.outputs.step-result }}
         runs-on: ubuntu-latest
         steps:
