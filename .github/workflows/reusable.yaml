@@ -9,7 +9,7 @@ on:
                 type: string
         outputs: 
             result: The result of the deployment operation
-            value:  ${{  jobs.deploy.result }}
+            value:  ${{  jobs.deploy.outputs.outcome }}
 
      #   secrets: 
       #      some-secrets:
