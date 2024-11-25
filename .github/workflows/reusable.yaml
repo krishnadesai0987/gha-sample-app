@@ -9,16 +9,16 @@ on:
                 type: string
         outputs: 
             result: The result of the deployment operation
-            value:  ${{ jobs.deploy.outputs.outcome }}
+            value:  ${{ jobs.deploy.outputs.outcome}}
 
      #   secrets: 
       #      some-secrets:
         #        required: true
 jobs:
   deploy:
-    outputs:
-      outcome: ${{ steps.set-result.outputs.step-result }}
-    runs-on: ubuntu-latest
+      outputs:
+         outcome: ${{ steps.set-result.outputs.step-result }}
+      runs-on: ubuntu-latest
       steps:
         - name: download artifact
           uses: actions/download-artifact@v3
