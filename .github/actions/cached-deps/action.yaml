@@ -5,6 +5,10 @@ inputs:
     description: 'Whether to cache dependencies or not'
     required: true    #controllar
     default: 'true'
+outputs:
+  used-cache:
+    description: 'Cache was used'
+    value: ${{ steps.install.outputs.cache }} 
 runs: 
   using: 'composite'
   steps: 
@@ -16,8 +20,11 @@ runs:
       path: node_modules
       key: deps-node-modules-${{ hashFiles('**/node_modules') }}
   - name: Install dependencies
+    id: install
     if: steps.cache.outputs.cache-hit != 'true'  ||  inputs.caching != 'true'   #install deps if caching is not enable
-    run: npm ci
+    run: |
+      npm ci 
+      echo "::set-output name=cache::'${{ inputs.caching }}'"
     shell: bash
 
 
