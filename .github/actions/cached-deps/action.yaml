@@ -16,7 +16,7 @@ runs:
       path: node_modules
       key: deps-node-modules-${{ hashFiles('**/node_modules') }}
   - name: Install dependencies
-    if: steps.cache.outputs.cache-hit != 'true'  ||  inputs.caching != "true"   #install deps if caching is not enable
+    if: steps.cache.outputs.cache-hit != 'true'  ||  inputs.caching != 'true'   #install deps if caching is not enable
     run: npm ci
     shell: bash
 
