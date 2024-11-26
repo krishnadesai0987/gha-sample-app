@@ -11,6 +11,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Load & cache dependencies
         uses: ./.github/actions/cached-deps
+        with:
+          caching: 'false'  #disable cachine for linit job, it will  reinstall deps
       - name: Lint Code
         run: npm run lint
   test:
@@ -67,3 +69,6 @@ jobs:
         echo "something went wrong"
         echo "${{ github }}"
 
+
+
+#
